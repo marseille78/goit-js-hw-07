@@ -25,15 +25,21 @@ class GalleryFirst {
       if (e.target.matches('.gallery__image')) {
         const instance = basicLightbox.create(`
           <img src=${e.target.dataset.source} alt=${e.target.alt}>
-        `)
+        `, {
+          onClose: () => {
+            document.removeEventListener('keydown', closeModal);
+          }
+        });
 
         instance.show();
 
-        document.addEventListener('keydown', e => {
+        document.addEventListener('keydown', closeModal);
+
+        function closeModal(e) {
           if (e.code === 'Escape') {
             instance.close();
           }
-        });
+        }
       }
     });
   }
