@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   (function() {
     if (!document.querySelector('.gallery')) return;
 
-    new GalleryFirst('.gallery', galleryItems);
+    new GalleryBasicLightbox('.gallery', galleryItems);
   })();
 });
 
-class GalleryFirst {
+class GalleryBasicLightbox {
   constructor(selector, data) {
     this.rootElement = document.querySelector(selector);
     this.data = data;
